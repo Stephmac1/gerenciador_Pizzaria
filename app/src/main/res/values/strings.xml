@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Gerenciador de Pizzaria</string>
+    <string name="adicionar_produto">Produto</string>
+    <string name="ooo" />
+    <string name="adicionar_quantidade">Quantidade</string>
+    <string name="adicionar_tipo">Tipo (Ingrediente/ Produto)</string>
+    <string name="Scroll" />
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="cor_de_fundo">#7CC6A064</color>
+    <color name="vermelho">#DD0C0C</color>
+    <color name="cor_botao">#9E0C02</color>
+</resources>
