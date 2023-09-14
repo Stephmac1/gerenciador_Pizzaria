@@ -59,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
             produto1.setTipo(tipoText);
             long id = dao.inserir(produto1);
             Toast.makeText(this, "Produto inserido com id: " + id, Toast.LENGTH_SHORT).show();
+
+            campoProduto.setText("");
+            campoQuantidade.setText("");
+            campoTipo.setText("");
         }
         catch (NumberFormatException e){
             Toast.makeText(this, "Quantidade inválida. Insira um número válido", Toast.LENGTH_SHORT).show();
