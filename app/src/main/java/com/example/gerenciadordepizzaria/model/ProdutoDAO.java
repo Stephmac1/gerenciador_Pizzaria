@@ -35,7 +35,7 @@ public class ProdutoDAO {
             produto.setProduto(cursor.getString(1));
             produto.setQuantidade(cursor.getDouble(2));
             produto.setTipo(cursor.getString(3));
-            if ("Produto".equals(produto.getTipo().toLowerCase())) {
+            if ("produto".equals(produto.getTipo().toLowerCase())) {
                 produtos.add(produto);
             }
         }
@@ -51,7 +51,7 @@ public class ProdutoDAO {
             produto.setProduto(cursor.getString(1));
             produto.setQuantidade(cursor.getDouble(2));
             produto.setTipo(cursor.getString(3));
-            if ("Ingrediente".equals(produto.getTipo().toLowerCase())) {
+            if ("ingrediente".equals(produto.getTipo().toLowerCase())) {
                 ingredientes.add(produto);
             }
         }
