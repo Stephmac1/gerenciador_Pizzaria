@@ -17,13 +17,13 @@
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.Lista_ingredientes"
+            android:name=".activity.ListaIngredientesActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.Lista_produtos"
+            android:name=".activity.ListaProdutosActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.Menu_principal"
+            android:name=".activity.MenuPrincipalActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

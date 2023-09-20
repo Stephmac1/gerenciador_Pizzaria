@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Menu_principal.class);
+                Intent intent = new Intent(MainActivity.this, MenuPrincipalActivity.class);
                 startActivity(intent);
             }
         });

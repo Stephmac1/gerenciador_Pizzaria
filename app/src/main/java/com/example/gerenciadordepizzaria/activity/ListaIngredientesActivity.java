@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.example.gerenciadordepizzaria.adapter.ProdutoAdapter;
@@ -21,7 +20,7 @@ import com.example.gerenciadordepizzaria.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lista_ingredientes extends AppCompatActivity {
+public class ListaIngredientesActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProdutoDAO dao;
     private ProdutoAdapter adaptador;
@@ -53,7 +52,7 @@ public class Lista_ingredientes extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Lista_ingredientes.this, Menu_principal.class);
+                Intent intent = new Intent(ListaIngredientesActivity.this, MenuPrincipalActivity.class);
                 startActivity(intent);
             }
         });

@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.example.gerenciadordepizzaria.R;
 
-public class Menu_principal extends AppCompatActivity {
+public class MenuPrincipalActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,21 +22,21 @@ public class Menu_principal extends AppCompatActivity {
         adicionarProdutos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_principal.this, MainActivity.class);
+                Intent intent = new Intent(MenuPrincipalActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
         visualizarProdutos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_principal.this, Lista_produtos.class);
+                Intent intent = new Intent(MenuPrincipalActivity.this, ListaProdutosActivity.class);
                 startActivity(intent);
             }
         });
         visualizarIngredientes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Menu_principal.this, Lista_ingredientes.class);
+                Intent intent = new Intent(MenuPrincipalActivity.this, ListaIngredientesActivity.class);
                 startActivity(intent);
             }
         });

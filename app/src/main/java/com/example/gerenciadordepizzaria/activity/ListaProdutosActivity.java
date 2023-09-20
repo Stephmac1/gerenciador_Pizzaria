@@ -20,7 +20,7 @@ import com.example.gerenciadordepizzaria.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lista_produtos extends AppCompatActivity {
+public class ListaProdutosActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ProdutoDAO dao;
     private ProdutoAdapter adaptador;
@@ -54,7 +54,7 @@ public class Lista_produtos extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Lista_produtos.this, Menu_principal.class);
+                Intent intent = new Intent(ListaProdutosActivity.this, MenuPrincipalActivity.class);
                 startActivity(intent);
             }
         });
