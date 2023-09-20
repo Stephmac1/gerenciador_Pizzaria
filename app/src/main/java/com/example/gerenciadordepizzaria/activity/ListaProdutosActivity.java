@@ -54,8 +54,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ListaProdutosActivity.this, MenuPrincipalActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
 
