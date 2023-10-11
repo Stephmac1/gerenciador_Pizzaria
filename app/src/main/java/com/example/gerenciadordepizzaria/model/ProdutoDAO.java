@@ -57,4 +57,7 @@ public class ProdutoDAO {
         }
         return ingredientes;
     }
+    public void excluirProduto(int produtoId) {
+        banco.delete("produtos", "id = ?", new String[] { String.valueOf(produtoId) });
+    }
 }

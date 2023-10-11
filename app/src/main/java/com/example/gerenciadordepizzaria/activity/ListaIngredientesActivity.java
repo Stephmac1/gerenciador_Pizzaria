@@ -1,11 +1,13 @@
 package com.example.gerenciadordepizzaria.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -83,5 +85,31 @@ public class ListaIngredientesActivity extends AppCompatActivity {
         ingredientes = dao.obterIngredientes();
         ingredientesFiltrados.clear();
         ingredientesFiltrados.addAll(ingredientes);
+    }
+    public void deletarClick(View view) {
+        int produtoId = (int) view.getTag();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Tem certeza de que deseja excluir este item?");
+        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                dao.excluirProduto(produtoId);
+
+                ingredientes = dao.obterIngredientes();
+                ingredientesFiltrados.clear();
+                ingredientesFiltrados.addAll(ingredientes);
+                adaptador.updateList(ingredientesFiltrados);
+
+                dialog.dismiss();
+            }
+        }).setNegativeButton("Não", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.show();
     }
 }

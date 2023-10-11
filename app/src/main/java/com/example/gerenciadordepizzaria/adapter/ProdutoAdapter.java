@@ -1,9 +1,12 @@
 package com.example.gerenciadordepizzaria.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.hardware.camera2.CaptureRequest;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -36,12 +39,15 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         Produto produto = produtos.get(position);
         holder.produto.setText(produto.getProduto());
         holder.quantidade.setText(produto.getQuantidade().toString());
+        holder.botao_deletar = holder.itemView.findViewById(R.id.botao_deletar);
+        holder.botao_deletar.setTag(produto.getId());
     }
 
     @Override
     public int getItemCount() {return this.produtos.size();}
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+        ImageView botao_deletar;
         TextView produto;
         TextView quantidade;
 
