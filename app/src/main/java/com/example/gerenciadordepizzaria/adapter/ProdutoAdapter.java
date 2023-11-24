@@ -41,12 +41,15 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         holder.quantidade.setText(produto.getQuantidade().toString());
         holder.botao_deletar = holder.itemView.findViewById(R.id.botao_deletar);
         holder.botao_deletar.setTag(produto.getId());
+        holder.botao_editar = holder.itemView.findViewById(R.id.botao_editar);
+        holder.botao_editar.setTag(produto.getId());
     }
-
     @Override
     public int getItemCount() {return this.produtos.size();}
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView botao_editar;
         ImageView botao_deletar;
         TextView produto;
         TextView quantidade;

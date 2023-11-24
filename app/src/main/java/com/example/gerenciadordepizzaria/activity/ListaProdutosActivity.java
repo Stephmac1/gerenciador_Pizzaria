@@ -118,4 +118,15 @@ public class ListaProdutosActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
+    public void editarClick(View view) {
+        View editarProdutos = findViewById(R.id.botao_editar);
+        editarProdutos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ListaProdutosActivity.this, AlterarActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 }
