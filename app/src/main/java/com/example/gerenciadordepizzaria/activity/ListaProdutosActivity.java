@@ -29,8 +29,6 @@ public class ListaProdutosActivity extends AppCompatActivity {
     private List<Produto> produtos;
     private List<Produto> produtosFiltrados = new ArrayList<>();
 
-    private RecyclerView.LayoutManager layoutManager;
-
     @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +45,7 @@ public class ListaProdutosActivity extends AppCompatActivity {
         produtosFiltrados.addAll(produtos);
         adaptador = new ProdutoAdapter(produtos);
 
-        layoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), LinearLayout.VERTICAL));
@@ -120,7 +118,6 @@ public class ListaProdutosActivity extends AppCompatActivity {
         });
         builder.show();
     }
-
     public void editarClick(View view) {
         int produtoId = (int) view.getTag();
         Produto produtoParaEditar = dao.obterProdutoPorId(produtoId);
