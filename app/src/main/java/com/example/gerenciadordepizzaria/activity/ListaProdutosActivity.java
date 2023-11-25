@@ -37,6 +37,8 @@ public class ListaProdutosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lista_produtos);
 
+        adaptador = new ProdutoAdapter(new ArrayList<>());
+
         recyclerView = findViewById(R.id.lista_produtos);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -120,13 +122,13 @@ public class ListaProdutosActivity extends AppCompatActivity {
     }
 
     public void editarClick(View view) {
-        View editarProdutos = findViewById(R.id.botao_editar);
-        editarProdutos.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ListaProdutosActivity.this, AlterarActivity.class);
-                startActivity(intent);
-            }
-        });
+        int produtoId = (int) view.getTag();
+        Produto produtoParaEditar = dao.obterProdutoPorId(produtoId);
+
+        if(produtoParaEditar != null){
+            Intent intent = new Intent(ListaProdutosActivity.this, AlterarActivity.class);
+            intent.putExtra("produtoParaEditar", produtoParaEditar);
+            startActivity(intent);
+        }
     }
 }

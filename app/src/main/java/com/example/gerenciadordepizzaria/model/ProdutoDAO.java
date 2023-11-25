@@ -60,4 +60,25 @@ public class ProdutoDAO {
     public void excluirProduto(int produtoId) {
         banco.delete("produtos", "id = ?", new String[] { String.valueOf(produtoId) });
     }
+    public Produto obterProdutoPorId(int produtoId){
+        Cursor cursor = banco.query("produtos", new String[]{"id", "produto","quantidade", "tipo"}, "id = ?",
+                new String[]{String.valueOf(produtoId)}, null, null, null);
+        if (cursor.moveToFirst()){
+            Produto produto = new Produto();
+            produto.setId(cursor.getInt(0));
+            produto.setProduto(cursor.getString(1));
+            produto.setQuantidade(cursor.getDouble(2));
+            produto.setTipo(cursor.getString(3));
+            return produto;
+        }
+        return null;
+    }
+    public void atualizarProduto(Produto produto){
+        ContentValues values = new ContentValues();
+        values.put("produto", produto.getProduto());
+        values.put("quantidade", produto.getQuantidade());
+        values.put("tipo", produto.getTipo());
+
+        banco.update("produtos", values, "id = ?", new String[]{String.valueOf(produto.getId())});
+    }
 }
