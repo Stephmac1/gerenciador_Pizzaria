@@ -32,8 +32,6 @@ public class AlterarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alterar);
 
-        adaptador = new ProdutoAdapter(new ArrayList<>());
-
         View voltar = findViewById(R.id.voltar_alterar);
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,15 +74,8 @@ public class AlterarActivity extends AppCompatActivity {
         ProdutoDAO dao = new ProdutoDAO(getApplicationContext());
         dao.atualizarProduto(produtoParaEditar);
 
-        produtos = dao.obterProdutos();
-        produtosFiltrados.clear();
-        produtosFiltrados.addAll(produtos);
-
-        if (adaptador != null) {
-            adaptador.updateList(produtosFiltrados);
-            adaptador.notifyDataSetChanged();
-        }
-
+        adaptador.updateList(dao.obterProdutos());
+        adaptador.notifyDataSetChanged();
         finish();
     }
     private void alterarIngrediente(){
@@ -101,15 +92,8 @@ public class AlterarActivity extends AppCompatActivity {
         ProdutoDAO dao = new ProdutoDAO(getApplicationContext());
         dao.atualizarProduto(produtoParaEditar);
 
-        ingredientes = dao.obterIngredientes();
-        ingredientesFiltrados.clear();
-        ingredientesFiltrados.addAll(ingredientes);
-
-        if (adaptador != null) {
-            adaptador.updateList(ingredientesFiltrados);
-            adaptador.notifyDataSetChanged();
-        }
-
+        adaptador.updateList(dao.obterIngredientes());
+        adaptador.notifyDataSetChanged();
         finish();
     }
 }

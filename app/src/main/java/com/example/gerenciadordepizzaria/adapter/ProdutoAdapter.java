@@ -63,7 +63,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         }
     }
     public void updateList(List<Produto> newList){
-        produtos.clear();
+        produtos = new ArrayList<>();
         produtos.addAll(newList);
         notifyDataSetChanged();
     }
