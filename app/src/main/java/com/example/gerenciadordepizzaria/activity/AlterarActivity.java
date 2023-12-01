@@ -32,6 +32,8 @@ public class AlterarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alterar);
 
+        adaptador = new ProdutoAdapter(new ArrayList<>());
+
         View voltar = findViewById(R.id.voltar_alterar);
         voltar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +80,10 @@ public class AlterarActivity extends AppCompatActivity {
         produtosFiltrados.clear();
         produtosFiltrados.addAll(produtos);
 
-        adaptador.updateList(produtosFiltrados);
-        adaptador.notifyDataSetChanged();
+        if (adaptador != null) {
+            adaptador.updateList(produtosFiltrados);
+            adaptador.notifyDataSetChanged();
+        }
 
         finish();
     }
@@ -101,8 +105,10 @@ public class AlterarActivity extends AppCompatActivity {
         ingredientesFiltrados.clear();
         ingredientesFiltrados.addAll(ingredientes);
 
-        adaptador.updateList(ingredientesFiltrados);
-        adaptador.notifyDataSetChanged();
+        if (adaptador != null) {
+            adaptador.updateList(ingredientesFiltrados);
+            adaptador.notifyDataSetChanged();
+        }
 
         finish();
     }

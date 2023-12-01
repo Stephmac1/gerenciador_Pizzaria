@@ -27,32 +27,34 @@ public class ProdutoDAO {
 
     public List<Produto> obterProdutos() {
         List<Produto> produtos = new ArrayList<>();
-        Cursor cursor = banco.query("produtos", new String[]{"id", "produto", "quantidade", "tipo"},
-                null, null, null, null, null);
-        while (cursor.moveToNext()) {
-            Produto produto = new Produto();
-            produto.setId(cursor.getInt(0));
-            produto.setProduto(cursor.getString(1));
-            produto.setQuantidade(cursor.getDouble(2));
-            produto.setTipo(cursor.getString(3));
-            if ("produto".equals(produto.getTipo().toLowerCase())) {
-                produtos.add(produto);
+        try (Cursor cursor = banco.query("produtos", new String[]{"id", "produto", "quantidade", "tipo"},
+                null, null, null, null, null);) {
+            while (cursor.moveToNext()) {
+                Produto produto = new Produto();
+                produto.setId(cursor.getInt(0));
+                produto.setProduto(cursor.getString(1));
+                produto.setQuantidade(cursor.getDouble(2));
+                produto.setTipo(cursor.getString(3));
+                if ("produto".equals(produto.getTipo().toLowerCase())) {
+                    produtos.add(produto);
+                }
             }
         }
         return produtos;
     }
     public List<Produto> obterIngredientes() {
         List<Produto> ingredientes = new ArrayList<>();
-        Cursor cursor = banco.query("produtos", new String[]{"id", "produto", "quantidade", "tipo"},
-                null, null, null, null, null);
-        while (cursor.moveToNext()) {
-            Produto produto = new Produto();
-            produto.setId(cursor.getInt(0));
-            produto.setProduto(cursor.getString(1));
-            produto.setQuantidade(cursor.getDouble(2));
-            produto.setTipo(cursor.getString(3));
-            if ("ingrediente".equals(produto.getTipo().toLowerCase())) {
-                ingredientes.add(produto);
+        try (Cursor cursor = banco.query("produtos", new String[]{"id", "produto", "quantidade", "tipo"},
+                null, null, null, null, null);) {
+            while (cursor.moveToNext()) {
+                Produto produto = new Produto();
+                produto.setId(cursor.getInt(0));
+                produto.setProduto(cursor.getString(1));
+                produto.setQuantidade(cursor.getDouble(2));
+                produto.setTipo(cursor.getString(3));
+                if ("ingrediente".equals(produto.getTipo().toLowerCase())) {
+                    ingredientes.add(produto);
+                }
             }
         }
         return ingredientes;
@@ -61,15 +63,16 @@ public class ProdutoDAO {
         banco.delete("produtos", "id = ?", new String[] { String.valueOf(produtoId) });
     }
     public Produto obterProdutoPorId(int produtoId){
-        Cursor cursor = banco.query("produtos", new String[]{"id", "produto","quantidade", "tipo"}, "id = ?",
-                new String[]{String.valueOf(produtoId)}, null, null, null);
-        if (cursor.moveToFirst()){
-            Produto produto = new Produto();
-            produto.setId(cursor.getInt(0));
-            produto.setProduto(cursor.getString(1));
-            produto.setQuantidade(cursor.getDouble(2));
-            produto.setTipo(cursor.getString(3));
-            return produto;
+        try(Cursor cursor = banco.query("produtos", new String[]{"id", "produto","quantidade", "tipo"}, "id = ?",
+                new String[]{String.valueOf(produtoId)}, null, null, null);) {
+            if (cursor.moveToFirst()) {
+                Produto produto = new Produto();
+                produto.setId(cursor.getInt(0));
+                produto.setProduto(cursor.getString(1));
+                produto.setQuantidade(cursor.getDouble(2));
+                produto.setTipo(cursor.getString(3));
+                return produto;
+            }
         }
         return null;
     }

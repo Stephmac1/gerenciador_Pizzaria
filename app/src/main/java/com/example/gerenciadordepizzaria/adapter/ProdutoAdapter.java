@@ -24,7 +24,9 @@ import java.util.List;
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHolder> {
 
     private List<Produto> produtos;
-    public ProdutoAdapter(List<Produto> lista){this.produtos = lista;}
+    public ProdutoAdapter(List<Produto> lista){
+        this.produtos = lista;
+    }
 
     @NonNull
     @Override
@@ -61,7 +63,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         }
     }
     public void updateList(List<Produto> newList){
-        produtos = new ArrayList<>();
+        produtos.clear();
         produtos.addAll(newList);
         notifyDataSetChanged();
     }
